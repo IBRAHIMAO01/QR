@@ -36,15 +36,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-const vcardData = `BEGIN:VCARD
-VERSION:3.0
-N:Kourouma;Ibrahima;Kalil;;
-FN:Ibrahima Kalil Kourouma
-TITLE:Développeur Logiciel
-TEL;TYPE=CELL:[MON_NUMERO_WHATSAPP]
-EMAIL:[MON_EMAIL]
-URL:https://qr-alpha-ruddy.vercel.app/
-END:VCARD`;
+const vcardData = "BEGIN:VCARD\n" +
+"VERSION:3.0\n" +
+"N:Kourouma;Ibrahima;Kalil;;\n" +
+"FN:Ibrahima Kalil Kourouma\n" +
+"TITLE:Développeur Logiciel\n" +
+"TEL;TYPE=CELL:[MON_NUMERO_WHATSAPP]\n" +
+"EMAIL:[MON_EMAIL]\n" +
+"URL:https://qr-alpha-ruddy.vercel.app/\n" +
+"END:VCARD";
 
     // 2. Generate QR Code
     const qrcodeContainer = document.getElementById("qrcode");
@@ -55,7 +55,7 @@ END:VCARD`;
         height: 220,
         colorDark : "#0f172a",
         colorLight : "#ffffff",
-        correctLevel : QRCode.CorrectLevel.M
+        correctLevel : QRCode.CorrectLevel.L
     });
 
     // 3. Download QR Code Feature
