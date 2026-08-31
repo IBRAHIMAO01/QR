@@ -36,36 +36,32 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-const QR_URL = "https://qr-alpha-ruddy.vercel.app/";
+    const vcardData = "BEGIN:VCARD\n" +
+    "VERSION:3.0\n" +
+    "N:Kourouma;Ibrahima;Kalil;;\n" +
+    "FN:Ibrahima Kalil Kourouma\n" +
+    "TITLE:Développeur Logiciel\n" +
+    "TEL;TYPE=CELL:[MON_NUMERO_WHATSAPP]\n" +
+    "EMAIL:[MON_EMAIL]\n" +
+    "URL:https://qr-alpha-ruddy.vercel.app/\n" +
+    "END:VCARD";
 
-    // 2. Generate QR Code
-    const qrcodeContainer = document.getElementById("qrcode");
-    
-    const qrcode = new QRCode(qrcodeContainer, {
-        text: QR_URL,
-        width: 220,
-        height: 220,
-        colorDark : "#0f172a",
-        colorLight : "#ffffff",
-        correctLevel : QRCode.CorrectLevel.H
+    // 2. Generate QR Code with QRious
+    const qr = new QRious({
+        element: document.getElementById('qrcode'),
+        value: vcardData,
+        size: 250,
+        background: '#ffffff',
+        foreground: '#0f172a',
+        level: 'M'
     });
 
     // 3. Download QR Code Feature
     const downloadBtn = document.getElementById('download-qr');
     downloadBtn.addEventListener('click', () => {
-        // The qrcode.js library generates a canvas and an img element. 
-        // We grab the image source (base64) to trigger download.
-        const qrImage = qrcodeContainer.querySelector('img');
-        const qrCanvas = qrcodeContainer.querySelector('canvas');
+        const canvas = document.getElementById('qrcode');
+        const imageSrc = canvas.toDataURL("image/png");
         
-        let imageSrc = '';
-        
-        if (qrImage && qrImage.getAttribute('src')) {
-            imageSrc = qrImage.getAttribute('src');
-        } else if (qrCanvas) {
-            imageSrc = qrCanvas.toDataURL("image/png");
-        }
-
         if (imageSrc) {
             const link = document.createElement('a');
             link.href = imageSrc;
@@ -74,7 +70,7 @@ const QR_URL = "https://qr-alpha-ruddy.vercel.app/";
             link.click();
             document.body.removeChild(link);
         } else {
-            alert("Erreur lors de la génération du téléchargement du QR code.");
+            alert("Erreur lors du téléchargement du QR code.");
         }
     });
 

@@ -183,8 +183,8 @@
         <section id="qr-section" class="section text-center">
             <h3 class="section-title">Ma carte de visite</h3>
             <div class="qr-container">
-                <div id="qrcode"></div>
-                <p class="qr-hint">Scannez pour consulter ma carte de visite numérique.</p>
+                <canvas id="qrcode"></canvas>
+                <p class="qr-hint">Scannez pour ajouter mon contact (hors-ligne).</p>
                 <button id="download-qr" class="btn btn-outline"><i class="fa-solid fa-download"></i> Télécharger le QR Code</button>
             </div>
         </section>
@@ -222,8 +222,8 @@
         </div>
     </footer>
 
-    <!-- QRCode.js Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <!-- QRious Library for robust QR code generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
