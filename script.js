@@ -36,18 +36,26 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+const vcardData = `BEGIN:VCARD
+VERSION:3.0
+N:Kourouma;Ibrahima;Kalil;;
+FN:Ibrahima Kalil Kourouma
+TITLE:Développeur Logiciel
+TEL;TYPE=CELL:[MON_NUMERO_WHATSAPP]
+EMAIL:[MON_EMAIL]
+URL:https://qr-alpha-ruddy.vercel.app/
+END:VCARD`;
+
     // 2. Generate QR Code
     const qrcodeContainer = document.getElementById("qrcode");
     
-    // Default color for QR Code based on theme can be dynamic, 
-    // but a classic black & white or brand color QR is usually better for scannability.
     const qrcode = new QRCode(qrcodeContainer, {
-        text: QR_URL,
-        width: 200,
-        height: 200,
-        colorDark : "#0f172a", // Dark blue/black for good contrast
+        text: vcardData,
+        width: 220,
+        height: 220,
+        colorDark : "#0f172a",
         colorLight : "#ffffff",
-        correctLevel : QRCode.CorrectLevel.H
+        correctLevel : QRCode.CorrectLevel.M
     });
 
     // 3. Download QR Code Feature
