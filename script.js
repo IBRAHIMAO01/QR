@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const htmlElement = document.documentElement;
     const themeIcon = themeToggleBtn.querySelector('i');
 
-    // Check saved theme or system preference
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
         htmlElement.setAttribute('data-theme', savedTheme);
@@ -20,7 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
     themeToggleBtn.addEventListener('click', () => {
         const currentTheme = htmlElement.getAttribute('data-theme');
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        
         htmlElement.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
         updateThemeIcon(newTheme);
@@ -36,32 +34,31 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    const vcardData = "BEGIN:VCARD\n" +
-    "VERSION:3.0\n" +
-    "N:Kourouma;Ibrahima;Kalil;;\n" +
-    "FN:Ibrahima Kalil Kourouma\n" +
-    "TITLE:Développeur Logiciel\n" +
-    "TEL;TYPE=CELL:[MON_NUMERO_WHATSAPP]\n" +
-    "EMAIL:[MON_EMAIL]\n" +
-    "URL:https://qr-alpha-ruddy.vercel.app/\n" +
-    "END:VCARD";
+    // 2. Generate QR Code
+    const qrcodeContainer = document.getElementById("qrcode");
 
-    // 2. Generate QR Code with QRious
-    const qr = new QRious({
-        element: document.getElementById('qrcode'),
-        value: vcardData,
-        size: 250,
-        background: '#ffffff',
-        foreground: '#0f172a',
-        level: 'M'
+    const qrcode = new QRCode(qrcodeContainer, {
+        text: QR_URL,
+        width: 220,
+        height: 220,
+        colorDark: "#0f172a",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
     });
 
     // 3. Download QR Code Feature
     const downloadBtn = document.getElementById('download-qr');
     downloadBtn.addEventListener('click', () => {
-        const canvas = document.getElementById('qrcode');
-        const imageSrc = canvas.toDataURL("image/png");
-        
+        const qrImage = qrcodeContainer.querySelector('img');
+        const qrCanvas = qrcodeContainer.querySelector('canvas');
+        let imageSrc = '';
+
+        if (qrImage && qrImage.getAttribute('src')) {
+            imageSrc = qrImage.getAttribute('src');
+        } else if (qrCanvas) {
+            imageSrc = qrCanvas.toDataURL("image/png");
+        }
+
         if (imageSrc) {
             const link = document.createElement('a');
             link.href = imageSrc;
@@ -79,8 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
-            if(targetId === '#') return;
-            
+            if (targetId === '#') return;
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 targetElement.scrollIntoView({

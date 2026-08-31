@@ -183,8 +183,8 @@
         <section id="qr-section" class="section text-center">
             <h3 class="section-title">Ma carte de visite</h3>
             <div class="qr-container">
-                <canvas id="qrcode"></canvas>
-                <p class="qr-hint">Scannez pour ajouter mon contact (hors-ligne).</p>
+                <div id="qrcode"></div>
+                <p class="qr-hint">Scannez pour consulter ma carte de visite numérique.</p>
                 <button id="download-qr" class="btn btn-outline"><i class="fa-solid fa-download"></i> Télécharger le QR Code</button>
             </div>
         </section>
@@ -194,15 +194,10 @@
             <h3 class="section-title">Me contacter</h3>
             <div class="contact-info">
                 <p><i class="fa-solid fa-location-dot"></i> Conakry, Guinée</p>
-                <p><i class="fa-solid fa-envelope"></i> [MON_EMAIL]</p>
-                <p><i class="fa-brands fa-whatsapp"></i> [MON_NUMERO_WHATSAPP]</p>
             </div>
             
             <div class="social-links">
-                <a href="mailto:[MON_EMAIL]" class="social-btn"><i class="fa-solid fa-envelope"></i> Email</a>
-                <a href="https://wa.me/[MON_NUMERO_WHATSAPP]" target="_blank" rel="noopener noreferrer" class="social-btn"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
-                <a href="[MON_GITHUB]" target="_blank" rel="noopener noreferrer" class="social-btn"><i class="fa-brands fa-github"></i> GitHub</a>
-                <a href="[MON_LINKEDIN]" target="_blank" rel="noopener noreferrer" class="social-btn"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                <a href="https://github.com/IBRAHIMAO01" target="_blank" rel="noopener noreferrer" class="social-btn"><i class="fa-brands fa-github"></i> GitHub</a>
             </div>
 
             <div class="cv-download">
@@ -216,14 +211,12 @@
     <footer>
         <p>&copy; 2026 Ibrahima Kalil Kourouma — Développeur logiciel</p>
         <div class="footer-links">
-            <a href="[MON_GITHUB]" target="_blank"><i class="fa-brands fa-github"></i></a>
-            <a href="[MON_LINKEDIN]" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="https://wa.me/[MON_NUMERO_WHATSAPP]" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://github.com/IBRAHIMAO01" target="_blank"><i class="fa-brands fa-github"></i></a>
         </div>
     </footer>
 
-    <!-- QRious Library for robust QR code generation -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <!-- QRCode.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
