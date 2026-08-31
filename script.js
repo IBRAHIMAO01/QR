@@ -2,7 +2,7 @@
  * Configuration de l'URL pour le QR Code
  * Remplacez cette URL par l'URL publique de votre site sur Vercel
  */
-const QR_URL = "https://MON-SITE.vercel.app";
+const QR_URL = "https://qr-alpha-ruddy.vercel.app/";
 
 document.addEventListener("DOMContentLoaded", () => {
     // 1. Theme Toggle (Dark/Light mode)
